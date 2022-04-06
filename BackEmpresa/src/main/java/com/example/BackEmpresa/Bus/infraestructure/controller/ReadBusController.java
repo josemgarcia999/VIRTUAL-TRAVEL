@@ -2,8 +2,10 @@ package com.example.BackEmpresa.Bus.infraestructure.controller;
 
 
 import com.example.BackEmpresa.Bus.application.IBus;
+import com.example.BackEmpresa.Bus.infraestructure.controller.dto.output.BusListaOutputDto;
 import com.example.BackEmpresa.Bus.infraestructure.controller.dto.output.BusOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +21,9 @@ public class ReadBusController {
 
 
     @GetMapping
-    public List<BusOutputDto> getAllReservas(){
-        return reservasRealizadasService.findAll();
+    public ResponseEntity<BusListaOutputDto> getAllReservas() {
+        return ResponseEntity.ok().body(reservasRealizadasService.findAll());
+
     }
 
 }

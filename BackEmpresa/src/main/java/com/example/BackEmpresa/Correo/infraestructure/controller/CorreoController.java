@@ -1,10 +1,17 @@
 package com.example.BackEmpresa.Correo.infraestructure.controller;
 
 import com.example.BackEmpresa.Correo.application.ICorreo;
+import com.example.BackEmpresa.Correo.domain.CorreoEntity;
+import com.example.BackEmpresa.Correo.infraestructure.controller.dto.input.BuscarCorreoDto;
+import com.example.BackEmpresa.Correo.infraestructure.controller.dto.input.CorreoInputDto;
+import com.example.BackEmpresa.Correo.infraestructure.controller.dto.output.CorreoListaOutputDto;
+import com.example.BackEmpresa.Correo.infraestructure.controller.dto.output.CorreoOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/correo")
@@ -13,14 +20,18 @@ public class CorreoController {
     @Autowired
     ICorreo correoService;
 
+    @GetMapping
+    public ResponseEntity<CorreoListaOutputDto> obtenerCorreos(@RequestBody BuscarCorreoDto datos){
+            return ResponseEntity.ok().body(correoService.obtenerCorreos(datos.getCiudadDestino(), datos.getFechaSuperior(),datos.getFechaInferior(),datos.getHoraSuperior(),datos.getHoraInferior()));
+    }
+    @PutMapping
+    public ResponseEntity<CorreoOutputDto> reenviarCorreo(@RequestBody CorreoInputDto correo){
+        return ResponseEntity.ok().body(correoService.reenviarEmail(correo));
+    }
 
 
 
-//
-//    @PostMapping
-//    public void enviarCorreoPrueba(){
-//        correoService.sendEmail2();
-//    }
+
 
 
 

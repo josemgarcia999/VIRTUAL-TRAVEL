@@ -1,6 +1,7 @@
 package com.example.BackEmpresa.Bus.application;
 
 import com.example.BackEmpresa.Bus.domain.BusEntity;
+import com.example.BackEmpresa.Bus.infraestructure.controller.dto.output.BusListaOutputDto;
 import com.example.BackEmpresa.Bus.infraestructure.controller.dto.output.BusOutputDto;
 import com.example.BackEmpresa.Bus.infraestructure.repository.BusRepo;
 
@@ -18,14 +19,16 @@ public class BusService implements IBus{
     BusRepo reservasRealizadas;
 
     @Override
-    public List<BusOutputDto> findAll() {
+    public BusListaOutputDto findAll() {
+        BusListaOutputDto listaBuses = new BusListaOutputDto();
         List<BusEntity> reservaEntities = reservasRealizadas.findAll();
         List<BusOutputDto> reservaOutputDTOList = new ArrayList<>();
         for(BusEntity be: reservaEntities){
             BusOutputDto busOutputDto = new BusOutputDto(be);
             reservaOutputDTOList.add(busOutputDto);
         }
-        return reservaOutputDTOList;
+        listaBuses.setBusOutputDtoList(reservaOutputDTOList);
+        return listaBuses;
     }
 
     @Override
