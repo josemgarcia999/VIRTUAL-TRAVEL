@@ -1,10 +1,9 @@
-package com.example.BackEmpresa.Bus.application;
+package com.example.BackWeb.Bus.application;
 
-import com.example.BackEmpresa.Bus.infraestructure.controller.dto.output.BusListaOutputDto;
-import com.example.BackEmpresa.Bus.infraestructure.controller.dto.output.BusOutputDto;
+import com.example.BackWeb.Bus.infraestructure.controller.dto.output.BusListaOutputDto;
+import com.example.BackWeb.Bus.infraestructure.controller.dto.output.BusOutputDto;
 
 import java.util.Date;
-import java.util.List;
 
 public interface IBus {
 
@@ -14,6 +13,5 @@ public interface IBus {
     public void deleteById(Integer id);
     public void deleteAll();
     public int obtenerCapacidadViaje(String ciudadDestino, Date fechaViaje, Float horaViaje);
-
 
 }

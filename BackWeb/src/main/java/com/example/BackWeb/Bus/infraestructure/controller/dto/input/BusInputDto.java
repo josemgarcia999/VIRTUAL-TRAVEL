@@ -1,4 +1,4 @@
-package com.example.BackEmpresa.Bus.infraestructure.controller.dto.input;
+package com.example.BackWeb.Bus.infraestructure.controller.dto.input;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

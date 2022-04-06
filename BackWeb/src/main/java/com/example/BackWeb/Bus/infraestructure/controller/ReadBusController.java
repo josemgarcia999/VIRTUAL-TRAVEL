@@ -1,17 +1,14 @@
-package com.example.BackEmpresa.Bus.infraestructure.controller;
+package com.example.BackWeb.Bus.infraestructure.controller;
 
 
-import com.example.BackEmpresa.Bus.application.IBus;
-import com.example.BackEmpresa.Bus.infraestructure.controller.dto.input.BusInputDto;
-import com.example.BackEmpresa.Bus.infraestructure.controller.dto.output.BusListaOutputDto;
-import com.example.BackEmpresa.Bus.infraestructure.controller.dto.output.BusOutputDto;
+import com.example.BackWeb.Bus.application.IBus;
+import com.example.BackWeb.Bus.infraestructure.controller.dto.input.BusInputDto;
+import com.example.BackWeb.Bus.infraestructure.controller.dto.output.BusListaOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("api/reservasDisponibles")
@@ -24,9 +21,7 @@ public class ReadBusController {
     @GetMapping
     public ResponseEntity<BusListaOutputDto> getAllReservas() {
         return ResponseEntity.ok().body(reservasRealizadasService.findAll());
-
     }
-
 
     @GetMapping("capacidad")
     ResponseEntity<Integer> obtenerCapacidadViaje(BusInputDto viaje){

@@ -1,11 +1,10 @@
-package com.example.BackEmpresa.Bus.application;
+package com.example.BackWeb.Bus.application;
 
-import com.example.BackEmpresa.Bus.domain.BusEntity;
-import com.example.BackEmpresa.Bus.infraestructure.controller.dto.output.BusListaOutputDto;
-import com.example.BackEmpresa.Bus.infraestructure.controller.dto.output.BusOutputDto;
-import com.example.BackEmpresa.Bus.infraestructure.repository.BusRepo;
-
-import com.example.BackEmpresa.shared.exceptions.NotFoundException;
+import com.example.BackWeb.Bus.domain.BusEntity;
+import com.example.BackWeb.Bus.infraestructure.controller.dto.output.BusListaOutputDto;
+import com.example.BackWeb.Bus.infraestructure.controller.dto.output.BusOutputDto;
+import com.example.BackWeb.Bus.infraestructure.repository.BusRepo;
+import com.example.BackWeb.shared.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,9 +57,10 @@ public class BusService implements IBus{
     public void deleteAll() {
         reservasRealizadas.deleteAll();
     }
+
+
     @Override
     public int obtenerCapacidadViaje(String ciudadDestino, Date fechaViaje, Float horaViaje) {
-        return reservasRealizadas.findByCiudadDestinoAndHoraAndFecha(ciudadDestino,horaViaje,fechaViaje).getCapacidad();
+       return reservasRealizadas.findByCiudadDestinoAndHoraAndFecha(ciudadDestino,horaViaje,fechaViaje).getCapacidad();
     }
-
 }

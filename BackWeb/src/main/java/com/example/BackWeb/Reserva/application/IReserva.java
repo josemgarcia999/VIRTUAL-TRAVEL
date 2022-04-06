@@ -5,11 +5,11 @@ import com.example.BackWeb.Reserva.infraestructure.controller.dto.output.Reserva
 import com.example.BackWeb.Reserva.infraestructure.controller.dto.output.ReservaOutputDTO;
 
 public interface IReserva {
-    public ReservaOutputDTO addReserva(ReservaInputDTO reservaInputDTO);
+    public ReservaOutputDTO realizarReserva(ReservaInputDTO reservaInputDTO);
     public ReservaOutputDTO findById(Integer id) throws Exception;
     public ReservaListaOutputDTO findAll();
-    public ReservaListaOutputDTO findByCiudadDestino();
-    public void deleteById();
+    public ReservaListaOutputDTO findByCiudadDestino(String ciudadDestino);
+    public void deleteById(Integer id);
     public void deleteAll();
 
 }

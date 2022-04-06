@@ -14,9 +14,9 @@ import java.util.Date;
 @NoArgsConstructor
 public class ReservaEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    @Column(name = "Cuidad de Destino")
+    @Column(name = "CuidadDestino")
     String ciudadDestino;
     @Column(name = "Nombre")
     String nombre;
@@ -26,11 +26,12 @@ public class ReservaEntity {
     String telefono;
     @Column(name = "Email")
     String email;
-    @Column(name = "Fecha de Reserva")
+    @Column(name = "FechaReserva")
     Date fechaReserva;
-    @Column(name = "Hora de la reserva")
+    @Column(name = "HoraReserva")
     Float horaReserva;
     //añadir anotaciones de restricciones
+    String estado;
 
 
     public ReservaEntity(ReservaInputDTO reservaInputDTO){
@@ -43,7 +44,6 @@ public class ReservaEntity {
         setEmail(reservaInputDTO.getEmail());
         setFechaReserva(reservaInputDTO.getFechaReserva());
         setHoraReserva(reservaInputDTO.getHoraReserva());
-
     }
 
 

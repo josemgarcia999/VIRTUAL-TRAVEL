@@ -69,7 +69,7 @@ public class CorreoService implements ICorreo {
                             "Hora de reserva: " + correo.getHoraReserva() + "." + "\n" +
                             "Estado de reserva: " + reservaOutputDTO.getEstado() + "." + "\n" +
                             "Sentimos las molestias, en caso de que haya plazas para este viaje le mandaremos un mail." + "." + "\n" +
-                            " Muchas gracias por confiar en VIRTUAL_TRAVEL :)"
+                            "Muchas gracias por confiar en VIRTUAL_TRAVEL :)"
             );
 
         }
@@ -159,7 +159,7 @@ public class CorreoService implements ICorreo {
                             "Ciudad de destino: " + correoEspecifico.getCiudadDestino() + " " + "\n" +
                             "Fecha de reserva: " + formatter.format(correoEspecifico.getFechaReserva()) + " " + "\n" +
                             "Hora de reserva: " + correoEspecifico.getHoraReserva() + " " + "\n" +
-                            "Hora de reserva: " + correoEspecifico.getHoraReserva() + " " + "\n" +
+                            "Estado: " + "No disponible "+"" + " " + "\n" +
                             "Esperemos que disfrute. Muchas gracias por confiar en VIRTUAL_TRAVEL :)"
             );
             CorreoOutputDto correoOutputDto = new CorreoOutputDto(correoEspecifico);
