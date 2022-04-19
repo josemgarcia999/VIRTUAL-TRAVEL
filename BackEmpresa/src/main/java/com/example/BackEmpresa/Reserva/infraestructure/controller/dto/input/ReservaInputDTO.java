@@ -1,5 +1,6 @@
 package com.example.BackEmpresa.Reserva.infraestructure.controller.dto.input;
 
+import com.example.BackEmpresa.Reserva.domain.ReservaEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,4 +40,15 @@ public class ReservaInputDTO {
                 ", horaReserva=" + horaReserva +
                 '}';
     }
+
+    public ReservaInputDTO(ReservaEntity reserva){
+        setCiudadDestino(reserva.getCiudadDestino());
+        setNombre(reserva.getNombre());
+        setApellido(reserva.getApellido());
+        setTelefono(reserva.getTelefono());
+        setEmail(reserva.getEmail());
+        setHoraReserva(reserva.getHoraReserva());
+        setFechaReserva(reserva.getFechaReserva());
+    }
+
 }

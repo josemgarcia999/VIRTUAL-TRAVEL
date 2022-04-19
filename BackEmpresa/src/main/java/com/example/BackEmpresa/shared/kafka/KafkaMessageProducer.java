@@ -16,7 +16,7 @@ public class KafkaMessageProducer {
     @Autowired
     private KafkaTemplate<String, Object> kafkaTemplate;
 
-    @Value(value = "${message.topic.name:kafkatopic}")
+    //@Value(value = "${message.topic.name:kafkatopic}")
     private String topicName;
 
     public void sendMessage(String topic, ReservaInputDTO objeto) {

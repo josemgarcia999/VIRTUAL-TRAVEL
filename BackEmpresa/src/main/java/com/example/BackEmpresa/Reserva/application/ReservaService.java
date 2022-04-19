@@ -8,14 +8,19 @@ import com.example.BackEmpresa.Reserva.infraestructure.controller.dto.input.Rese
 import com.example.BackEmpresa.Reserva.infraestructure.controller.dto.output.ReservaListaOutputDTO;
 import com.example.BackEmpresa.Reserva.infraestructure.controller.dto.output.ReservaOutputDTO;
 import com.example.BackEmpresa.Reserva.infraestructure.repository.ReservaRepo;
+import com.example.BackEmpresa.shared.kafka.KafkaMessageProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ReservaService implements IReserva{
+
+
+    private int contadorActualizar=0;
 
     @Autowired
     ReservaRepo reservaRepo;
@@ -25,6 +30,9 @@ public class ReservaService implements IReserva{
 
     @Autowired
     ICorreo correoService;
+
+    @Autowired
+    KafkaMessageProducer kafkaMessageProducer;
 
     @Override//reservainputdto se corresponde con el mensaje asincrono de kafka que vamos a enviar desde backweb
     public ReservaOutputDTO realizarReserva(ReservaInputDTO reservaInputDTO) {
@@ -47,6 +55,17 @@ public class ReservaService implements IReserva{
         reservaRepo.save(reserva);
         ReservaOutputDTO reservaOutputDTO = new ReservaOutputDTO(reserva);
         correoService.sendEmail(reservaOutputDTO);
+        contadorActualizar++;
+        if(contadorActualizar%3==0){
+            Date fechaActual = new Date(System.currentTimeMillis());
+            List<ReservaEntity> reservas = reservaRepo.findByFechaReservaGreaterThan(fechaActual);
+            if(reservas != null){
+                for(int i = 0; i< reservas.size();i++){//convertir reservaEntity a reservaInput?
+                    ReservaInputDTO res = new ReservaInputDTO(reservas.get(i));
+                    kafkaMessageProducer.sendMessage("mytopic_2",res);
+                }
+            }
+        }
         return reservaOutputDTO;
         }else{
             return null;

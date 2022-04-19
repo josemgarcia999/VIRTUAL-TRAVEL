@@ -11,4 +11,5 @@ import java.util.List;
 public interface ReservaRepo extends JpaRepository<ReservaEntity,Integer> {
     ReservaEntity findByCiudadDestinoAndEmailAndFechaReservaAndHoraReserva(String ciudadDestino, String email, Date fechaReserva, Float horaReserva);
     List<ReservaEntity> findByCiudadDestino(String ciudadDestino);
+    List<ReservaEntity> findByFechaReservaGreaterThan(Date fechaReserva);
 }
