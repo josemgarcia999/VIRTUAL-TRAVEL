@@ -19,7 +19,7 @@ public class KafkaMessageProducer {
     @Value(value = "${message.topic.name:kafkatopic}")
     private String topicName;
 
-    public void sendMessage(String topic, ReservaOutputDTO objeto) {
+    public void sendMessage(String topic, ReservaInputDTO objeto) {
         ListenableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topic, objeto);
         future.addCallback(new ListenableFutureCallback<SendResult<String, Object>>() {
             @Override

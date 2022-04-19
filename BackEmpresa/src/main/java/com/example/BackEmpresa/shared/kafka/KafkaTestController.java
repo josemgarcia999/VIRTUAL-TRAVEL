@@ -2,7 +2,6 @@ package com.example.BackEmpresa.shared.kafka;
 
 
 import com.example.BackEmpresa.Reserva.infraestructure.controller.dto.input.ReservaInputDTO;
-import com.example.BackEmpresa.Reserva.infraestructure.controller.dto.output.ReservaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,10 +15,9 @@ public class KafkaTestController {
     KafkaMessageProducer kafkaMessageProducer;
 
     @PostMapping("/add/{topic}")
-    public void addIdCustomer(@PathVariable String topic, @RequestBody ReservaOutputDTO body)
+    public void addIdCustomer(@PathVariable String topic, @RequestBody ReservaInputDTO body)
     {
         kafkaMessageProducer.sendMessage(topic,body);
     }
-
 
 }

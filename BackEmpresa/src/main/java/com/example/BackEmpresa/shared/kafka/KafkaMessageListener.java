@@ -11,23 +11,20 @@ import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 
-
 @Component
 public class KafkaMessageListener {
+
+    ReservaOutputDtoDeserializer reservaOutputDtoDeserializer = new ReservaOutputDtoDeserializer();
 
     @Autowired
     IReserva reservaService;
 
-
-    ReservaOutputDtoDeserializer reservaOutputDtoDeserializer = new ReservaOutputDtoDeserializer();
-
     @KafkaListener(topics = "${message.topic.name:kafkatopic}", groupId = "${message.group.name:kafkagroup}")
-    public void listenTopic1(ReservaOutputDTO reserva) {
+    public void listenTopic1(ReservaInputDTO reserva) {
         System.out.println("Reserva recibida");
         System.out.println(reserva.toString());
-        reservaService.realizarReserva();
+        reservaService.realizarReserva(reserva);
         System.out.println("Objeto deserializado correctamente");
-
 
     }
 

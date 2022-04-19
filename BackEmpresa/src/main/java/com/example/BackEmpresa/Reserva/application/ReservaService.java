@@ -28,7 +28,8 @@ public class ReservaService implements IReserva{
 
     @Override//reservainputdto se corresponde con el mensaje asincrono de kafka que vamos a enviar desde backweb
     public ReservaOutputDTO realizarReserva(ReservaInputDTO reservaInputDTO) {
-        ReservaEntity reserva = new ReservaEntity(reservaInputDTO);
+        if(reservaRepo.findByCiudadDestinoAndEmailAndFechaReservaAndHoraReserva(reservaInputDTO.getCiudadDestino(),reservaInputDTO.getEmail(),reservaInputDTO.getFechaReserva(),reservaInputDTO.getHoraReserva()) == null){
+            ReservaEntity reserva = new ReservaEntity(reservaInputDTO);
         BusEntity reservaDisponible=reservasDisponiblesRepo.findByCiudadDestinoAndHoraAndFecha(reserva.getCiudadDestino(),reserva.getHoraReserva(),reserva.getFechaReserva());
         if(reservaDisponible!= null){
             if(reservaDisponible.getCapacidad()>0){
@@ -47,6 +48,9 @@ public class ReservaService implements IReserva{
         ReservaOutputDTO reservaOutputDTO = new ReservaOutputDTO(reserva);
         correoService.sendEmail(reservaOutputDTO);
         return reservaOutputDTO;
+        }else{
+            return null;
+        }
     }
 
     @Override
