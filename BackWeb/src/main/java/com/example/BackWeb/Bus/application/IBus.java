@@ -12,6 +12,6 @@ public interface IBus {
     public BusOutputDto findByCiudadDestino(String ciudadDestino);
     public void deleteById(Integer id);
     public void deleteAll();
-    public int obtenerCapacidadViaje(String ciudadDestino, Date fechaViaje, Float horaViaje);
+    public String obtenerCapacidadViaje(String ciudadDestino, Date fechaViaje, Float horaViaje);
 
 }

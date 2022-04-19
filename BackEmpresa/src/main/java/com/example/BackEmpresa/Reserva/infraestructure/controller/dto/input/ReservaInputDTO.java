@@ -27,4 +27,16 @@ public class ReservaInputDTO {
     @NotNull
     Float horaReserva;
 
+    @Override
+    public String toString() {
+        return "ReservaInputDTO{" +
+                "ciudadDestino='" + ciudadDestino + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", email='" + email + '\'' +
+                ", fechaReserva=" + fechaReserva +
+                ", horaReserva=" + horaReserva +
+                '}';
+    }
 }

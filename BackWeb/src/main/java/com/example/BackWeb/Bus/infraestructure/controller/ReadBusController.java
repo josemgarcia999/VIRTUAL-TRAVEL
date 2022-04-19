@@ -7,6 +7,7 @@ import com.example.BackWeb.Bus.infraestructure.controller.dto.output.BusListaOut
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,8 +24,9 @@ public class ReadBusController {
         return ResponseEntity.ok().body(reservasRealizadasService.findAll());
     }
 
+
     @GetMapping("capacidad")
-    ResponseEntity<Integer> obtenerCapacidadViaje(BusInputDto viaje){
+    ResponseEntity<String> obtenerCapacidadViaje(@RequestBody BusInputDto viaje){
         return ResponseEntity.ok().body(reservasRealizadasService.obtenerCapacidadViaje(viaje.getCiudadDestino(),viaje.getFecha(),viaje.getHora()));
     }
 

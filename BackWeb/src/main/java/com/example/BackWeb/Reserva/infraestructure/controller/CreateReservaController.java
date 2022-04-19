@@ -6,10 +6,7 @@ import com.example.BackWeb.Reserva.infraestructure.controller.dto.input.ReservaI
 import com.example.BackWeb.Reserva.infraestructure.controller.dto.output.ReservaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/reservas")
@@ -17,6 +14,7 @@ public class CreateReservaController {
 
     @Autowired
     IReserva reservaService;
+
 
     @PostMapping()
     public ResponseEntity<ReservaOutputDTO> addReserva(@RequestBody ReservaInputDTO reservaInputDTO){

@@ -60,7 +60,15 @@ public class BusService implements IBus{
 
 
     @Override
-    public int obtenerCapacidadViaje(String ciudadDestino, Date fechaViaje, Float horaViaje) {
-       return reservasRealizadas.findByCiudadDestinoAndHoraAndFecha(ciudadDestino,horaViaje,fechaViaje).getCapacidad();
+    public String obtenerCapacidadViaje(String ciudadDestino, Date fechaViaje, Float horaViaje) {
+        BusEntity bus= reservasRealizadas.findByCiudadDestinoAndHoraAndFecha(ciudadDestino,horaViaje,fechaViaje);
+        if(bus==null){
+            return "El viaje no existe";
+        } else{
+            if(bus.getCapacidad() == 0){
+                return "El viaje con destino a "+bus.getCiudadDestino()+ "+ no tiene plazas disponibles. Está lleno.";
+            }
+            return "Hay "+bus.getCapacidad()+" plazas disponibles para este viaje.";
+        }
     }
 }

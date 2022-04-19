@@ -7,6 +7,7 @@ import com.example.BackWeb.Reserva.infraestructure.controller.dto.input.ReservaI
 import com.example.BackWeb.Reserva.infraestructure.controller.dto.output.ReservaListaOutputDTO;
 import com.example.BackWeb.Reserva.infraestructure.controller.dto.output.ReservaOutputDTO;
 import com.example.BackWeb.Reserva.infraestructure.repository.ReservaRepo;
+import com.example.BackWeb.shared.kafka.KafkaMessageProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +24,14 @@ public class ReservaService implements IReserva{
     BusRepo reservasDisponiblesRepo;
 
 
+    @Autowired
+    KafkaMessageProducer kafkaMessageProducer;
+
+
 
     @Override//reservainputdto se corresponde con el mensaje asincrono de kafka que vamos a enviar desde backweb
     public ReservaOutputDTO realizarReserva(ReservaInputDTO reservaInputDTO) {
+        kafkaMessageProducer.sendMessage("mytopic_1",reservaInputDTO);
         ReservaEntity reserva = new ReservaEntity(reservaInputDTO);
         BusEntity reservaDisponible=reservasDisponiblesRepo.findByCiudadDestinoAndHoraAndFecha(reserva.getCiudadDestino(),reserva.getHoraReserva(),reserva.getFechaReserva());
         if(reservaDisponible!= null){
