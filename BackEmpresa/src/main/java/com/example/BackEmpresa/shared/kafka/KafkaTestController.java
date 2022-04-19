@@ -17,7 +17,7 @@ public class KafkaTestController {
     @PostMapping("/add/{topic}")
     public void addIdCustomer(@PathVariable String topic, @RequestBody ReservaInputDTO body)
     {
-        kafkaMessageProducer.sendMessage(topic,body);
+        kafkaMessageProducer.sendMessageTopic1(topic,body);
     }
 
 }

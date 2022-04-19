@@ -16,8 +16,15 @@ public class KafkaMessageListener {
     IReserva reservaService;
 
     @KafkaListener(topics = "${message.topic.name2:kafkatopic2}", groupId = "${message.group.name:kafkagroup2}")
+    public void listenTopic2(ReservaInputDTO reserva) {
+        System.out.println("Reserva recibida en topico 2");
+        System.out.println(reserva.toString());
+        System.out.println("Objeto deserializado correctamente");
+        reservaService.realizarReserva(reserva);
+    }
+    @KafkaListener(topics = "${message.topic.name:kafkatopic}", groupId = "${message.group.name:kafkagroup}")
     public void listenTopic1(ReservaInputDTO reserva) {
-        System.out.println("Reserva recibida");
+        System.out.println("Reserva recibida en topico 1");
         System.out.println(reserva.toString());
         System.out.println("Objeto deserializado correctamente");
         reservaService.realizarReserva(reserva);

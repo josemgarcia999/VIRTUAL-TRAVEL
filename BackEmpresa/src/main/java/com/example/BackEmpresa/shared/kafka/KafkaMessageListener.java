@@ -21,7 +21,7 @@ public class KafkaMessageListener {
 
     @KafkaListener(topics = "${message.topic.name:kafkatopic}", groupId = "${message.group.name:kafkagroup}")
     public void listenTopic1(ReservaInputDTO reserva) {
-        System.out.println("Reserva recibida");
+        System.out.println("Reserva recibida desde topic1");
         System.out.println(reserva.toString());
         reservaService.realizarReserva(reserva);
         System.out.println("Objeto deserializado correctamente");
