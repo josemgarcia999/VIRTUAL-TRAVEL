@@ -13,9 +13,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class ReservaService implements IReserva{
+public class ReservaService implements IReserva {
 
     @Autowired
     ReservaRepo reservaRepo;
@@ -28,37 +29,39 @@ public class ReservaService implements IReserva{
     KafkaMessageProducer kafkaMessageProducer;
 
 
-
     @Override//reservainputdto se corresponde con el mensaje asincrono de kafka que vamos a enviar desde backweb
     public ReservaOutputDTO realizarReserva(ReservaInputDTO reservaInputDTO) {
-        if(reservaRepo.findByCiudadDestinoAndEmailAndFechaReservaAndHoraReserva(reservaInputDTO.getCiudadDestino(),reservaInputDTO.getEmail(),reservaInputDTO.getFechaReserva(),reservaInputDTO.getHoraReserva()) == null){
-        kafkaMessageProducer.sendMessage("mytopic_1",reservaInputDTO);
-        ReservaEntity reserva = new ReservaEntity(reservaInputDTO);
-        BusEntity reservaDisponible=reservasDisponiblesRepo.findByCiudadDestinoAndHoraAndFecha(reserva.getCiudadDestino(),reserva.getHoraReserva(),reserva.getFechaReserva());
-        if(reservaDisponible!= null){
-            if(reservaDisponible.getCapacidad()>0){
-                reservaDisponible.setCapacidad(reservaDisponible.getCapacidad()-1);
-                reservasDisponiblesRepo.save(reservaDisponible);
+        ReservaEntity reservaEntity=reservaRepo.findByCiudadDestinoAndEmailAndFechaReservaAndHoraReserva(reservaInputDTO.getCiudadDestino(), reservaInputDTO.getEmail(), reservaInputDTO.getFechaReserva(), reservaInputDTO.getHoraReserva());
+        System.out.println(reservaRepo.findAll());
+        if (reservaEntity==null) {
+            System.out.println(reservaEntity);
+            ReservaEntity reserva = new ReservaEntity(reservaInputDTO);
+            BusEntity reservaDisponible = reservasDisponiblesRepo.findByCiudadDestinoAndHoraAndFecha(reserva.getCiudadDestino(), reserva.getHoraReserva(), reserva.getFechaReserva());
+            if (reservaDisponible != null) {
+                if (reservaDisponible.getCapacidad() > 0) {
+                    reservaDisponible.setCapacidad(reservaDisponible.getCapacidad() - 1);
+                    reservasDisponiblesRepo.saveAndFlush(reservaDisponible);
+                    reserva.setEstado("ACEPTADA");
+                } else {
+                    reserva.setEstado("CANCELADA");
+                }
+            } else {
+                BusEntity nuevaReserva = new BusEntity(reserva.getCiudadDestino(), reserva.getHoraReserva(), reserva.getFechaReserva());
+                reservasDisponiblesRepo.saveAndFlush(nuevaReserva);
                 reserva.setEstado("ACEPTADA");
-            }else{
-                reserva.setEstado("CANCELADA");
             }
-        }else{
-            BusEntity nuevaReserva = new BusEntity(reserva.getCiudadDestino(),reserva.getHoraReserva(),reserva.getFechaReserva());
-            reservasDisponiblesRepo.save(nuevaReserva);
-            reserva.setEstado("ACEPTADA");
-        }
-        reservaRepo.save(reserva);
-        ReservaOutputDTO reservaOutputDTO = new ReservaOutputDTO(reserva);
-        return reservaOutputDTO;
-        }else{
-             return null;
+            reservaRepo.saveAndFlush(reserva);
+            kafkaMessageProducer.sendMessage("", reservaInputDTO);
+            ReservaOutputDTO reservaOutputDTO = new ReservaOutputDTO(reserva);
+            return reservaOutputDTO;
+        } else {
+            return null;
         }
     }
 
     @Override
     public ReservaOutputDTO findById(Integer id) throws Exception {
-        ReservaEntity re = reservaRepo.findById(id).orElseThrow(() -> new Exception("No se encuentra reserva con ID "+id));
+        ReservaEntity re = reservaRepo.findById(id).orElseThrow(() -> new Exception("No se encuentra reserva con ID " + id));
         ReservaOutputDTO reservaOutputDTO = new ReservaOutputDTO(re);
         return reservaOutputDTO;
     }
@@ -68,7 +71,7 @@ public class ReservaService implements IReserva{
         ReservaListaOutputDTO reservaListaOutputDTO = new ReservaListaOutputDTO();
         List<ReservaEntity> reservaEntities = reservaRepo.findAll();
         List<ReservaOutputDTO> reservaOutputDTOList = new ArrayList<>();
-        for(ReservaEntity re: reservaEntities){
+        for (ReservaEntity re : reservaEntities) {
             ReservaOutputDTO reservaOutputDTO = new ReservaOutputDTO(re);
             reservaOutputDTOList.add(reservaOutputDTO);
         }
@@ -81,7 +84,7 @@ public class ReservaService implements IReserva{
         ReservaListaOutputDTO reservaListaOutputDTO = new ReservaListaOutputDTO();
         List<ReservaEntity> reservaEntities = reservaRepo.findByCiudadDestino(ciudadDestino);
         List<ReservaOutputDTO> reservaOutputDTOList = new ArrayList<>();
-        for(ReservaEntity re: reservaEntities){
+        for (ReservaEntity re : reservaEntities) {
             ReservaOutputDTO reservaOutputDTO = new ReservaOutputDTO(re);
             reservaOutputDTOList.add(reservaOutputDTO);
         }

@@ -55,7 +55,7 @@ public class ReservaService implements IReserva{
         reservaRepo.save(reserva);
         ReservaOutputDTO reservaOutputDTO = new ReservaOutputDTO(reserva);
         correoService.sendEmail(reservaOutputDTO);
-        kafkaMessageProducer.sendMessageTopic1("mytopic_1",reservaInputDTO);
+        //kafkaMessageProducer.sendMessageTopic1("mytopic_1",reservaInputDTO);
         contadorActualizar++;
         if(contadorActualizar%3==0){
             Date fechaActual = new Date(System.currentTimeMillis());

@@ -28,8 +28,6 @@ public class KafkaMessageListener {
         System.out.println(reserva.toString());
         System.out.println("Objeto deserializado correctamente");
         reservaService.realizarReserva(reserva);
-
-
     }
 
 }

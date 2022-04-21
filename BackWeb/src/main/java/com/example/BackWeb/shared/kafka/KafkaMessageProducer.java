@@ -18,11 +18,13 @@ public class KafkaMessageProducer {
     private String topicName;
 
     public void sendMessage(String topic, ReservaInputDTO objeto) {
+        if (topic==null || topic.trim().equals(""))
+            topic=topicName;
         ListenableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topic, objeto);
         future.addCallback(new ListenableFutureCallback<SendResult<String, Object>>() {
             @Override
             public void onSuccess(SendResult<String, Object> result) {
-                System.out.println("Reserva enviada al topico "+ topic + " with offset=[" + result.getRecordMetadata().offset() + "]");
+                System.out.println("Reserva enviada al topico1" + "with offset=[" + result.getRecordMetadata().offset() + "]");
             }
             @Override
             public void onFailure(Throwable ex) {System.err.println("Mensaje no enviado");
