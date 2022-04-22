@@ -1,6 +1,7 @@
 package com.example.BackEmpresa.Reserva.domain;
 
 import com.example.BackEmpresa.Reserva.infraestructure.controller.dto.input.ReservaInputDTO;
+import com.example.BackEmpresa.shared.Validator.horaReserva;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -29,6 +30,7 @@ public class ReservaEntity {
     @Column(name = "FechaReserva")
     Date fechaReserva;
     @Column(name = "HoraReserva")
+    @horaReserva
     Float horaReserva;
     //añadir anotaciones de restricciones
     String estado;

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("api/reservas")
 public class CreateReservaController {
@@ -16,7 +18,7 @@ public class CreateReservaController {
     IReserva reservaService;
 
     @PostMapping()
-    public ResponseEntity<ReservaOutputDTO> addReserva(@RequestBody ReservaInputDTO reservaInputDTO){
+    public ResponseEntity<ReservaOutputDTO> addReserva(@RequestBody @Valid ReservaInputDTO reservaInputDTO){
         return ResponseEntity.ok().body(reservaService.realizarReserva(reservaInputDTO));
     }
 

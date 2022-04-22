@@ -34,9 +34,9 @@ public class ReservaEntity {
     String estado;
 
 
-    public ReservaEntity(ReservaInputDTO reservaInputDTO){
-        if(reservaInputDTO == null)
-        return;
+    public ReservaEntity(ReservaInputDTO reservaInputDTO) {
+        if (reservaInputDTO == null)
+            return;
         setCiudadDestino(reservaInputDTO.getCiudadDestino());
         setNombre(reservaInputDTO.getNombre());
         setApellido(reservaInputDTO.getApellido());
