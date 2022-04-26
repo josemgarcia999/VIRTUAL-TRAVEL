@@ -33,7 +33,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
-        customAuthenticationFilter.setFilterProcessesUrl("/api/login");
+        customAuthenticationFilter.setFilterProcessesUrl("/api/empresa/login");
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/**").permitAll();//comentar cuando acabemos ejercicio, permite no tener que estar poniendo token todo el rato
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

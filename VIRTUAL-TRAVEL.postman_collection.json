@@ -159,6 +159,156 @@
 					]
 				},
 				{
+					"name": "Reserva Web 8083 (EUREKA)",
+					"item": [
+						{
+							"name": "RealizarReserva",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvbG9naW4iLCJleHAiOjE2NDkxNTgxOTh9.4hxjEbdP82H4-WKiiVbKbNSq4u_E4gInMpFGxlqOzAw",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ciudadDestino\":\"Barcelona\",\r\n    \"nombre\":\"Jose\",\r\n    \"apellido\":\"Garcia\",\r\n    \"telefono\":\"666666666\",\r\n    \"email\":\"josemanuel.garcia@bosonit.com\",\r\n    \"fechaReserva\":\"2022-04-29\",\r\n    \"horaReserva\":\"8\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "www.localhost:8083/api/web/reservas",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"web",
+										"reservas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "consultarReservasDisponibles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8083/api/web/reservasDisponibles",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"web",
+										"reservasDisponibles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "obtenerCapacidadViaje",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8083/api/web/reservasDisponibles/capacidad",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"web",
+										"reservasDisponibles",
+										"capacidad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ObtenerTodasReservas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8083/api/web/",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"web",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "borrarReserva",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8083/api/web/reservas/1",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"web",
+										"reservas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "borrarAutobus",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8083/api/web/reservasDisponibles/1",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"web",
+										"reservasDisponibles",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Reserva Web 8082",
 					"item": [
 						{

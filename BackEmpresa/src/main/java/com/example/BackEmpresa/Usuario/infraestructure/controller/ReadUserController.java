@@ -13,7 +13,7 @@ import javax.persistence.NamedEntityGraph;
 import java.util.List;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/empresa")
 public class ReadUserController {
     @Autowired
     IUsuario usuarioService;
