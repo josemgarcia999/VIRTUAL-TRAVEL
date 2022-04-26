@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/reservasDisponibles")
+@RequestMapping("api/empresa/reservasDisponibles")
 public class ReadBusController {
 
     @Autowired

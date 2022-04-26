@@ -1,5 +1,6 @@
 package com.example.BackEmpresa.Reserva.infraestructure.controller.dto.output;
 
+import com.example.BackEmpresa.Bus.domain.BusEntity;
 import com.example.BackEmpresa.Reserva.domain.ReservaEntity;
 import lombok.Data;
 
@@ -17,6 +18,7 @@ public class ReservaOutputDTO {
     Date fechaReserva;
     Float horaReserva;
     String estado;
+    Integer idBus;
 
 
     public ReservaOutputDTO(ReservaEntity reserva) {
@@ -29,6 +31,10 @@ public class ReservaOutputDTO {
         setFechaReserva(reserva.getFechaReserva());
         setHoraReserva(reserva.getHoraReserva());
         setEstado(reserva.getEstado());
+        if(reserva.getBusAsignado() == null) {
+            setIdBus(null);
+        } else
+            setIdBus(reserva.getBusAsignado().getId());
     }
 
 

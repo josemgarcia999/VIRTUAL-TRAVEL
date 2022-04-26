@@ -29,7 +29,8 @@ public class CorreoEntity {
     Date fechaReserva;
     @NotNull (message = "HoraReserva")
     Float horaReserva;
-
+    @NotNull(message = "idAutobus")
+    Integer idAutobus;
 
 
     public CorreoEntity(CorreoInputDto correo){
@@ -37,6 +38,7 @@ public class CorreoEntity {
         setEmail(correo.getEmail());
         setFechaReserva(correo.getFechaReserva());
         setHoraReserva(correo.getHoraReserva());
+        setIdAutobus(correo.getIdAutobus());
     }
 
 

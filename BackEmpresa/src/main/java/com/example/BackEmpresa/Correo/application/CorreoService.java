@@ -58,6 +58,7 @@ public class CorreoService implements ICorreo {
                             "Ciudad de destino: " + correo.getCiudadDestino() + " " + "\n" +
                             "Fecha de reserva: " + formatter.format(correo.getFechaReserva()) + " " + "\n" +
                             "Hora de reserva: " + correo.getHoraReserva() + " " + "\n" +
+                            "Autobús Asignado: " + correo.getIdAutobus() + " " + "\n" +
                             "Estado de reserva: " + reservaOutputDTO.getEstado() + " " + "\n" +
                             "Esperemos que disfrute. Muchas gracias por confiar en VIRTUAL_TRAVEL :)"
             );

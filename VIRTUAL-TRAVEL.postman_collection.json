@@ -1,0 +1,546 @@
+{
+	"info": {
+		"_postman_id": "20e9c62f-a960-47a8-b74e-ea36ab6940c9",
+		"name": "VIRTUAL-TRAVEL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "BackWeb",
+			"item": [
+				{
+					"name": "Reserva Web 8081",
+					"item": [
+						{
+							"name": "RealizarReserva",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvbG9naW4iLCJleHAiOjE2NDkxNTgxOTh9.4hxjEbdP82H4-WKiiVbKbNSq4u_E4gInMpFGxlqOzAw",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ciudadDestino\":\"Madrid\",\r\n    \"nombre\":\"Jose\",\r\n    \"apellido\":\"Garcia\",\r\n    \"telefono\":\"666666666\",\r\n    \"email\":\"josemanuel.garcia@bosonit.com\",\r\n    \"fechaReserva\":\"2022-04-29\",\r\n    \"horaReserva\":\"8\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "www.localhost:8081/api/web/reservas",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"web",
+										"reservas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "consultarReservasDisponibles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8081/api/web/reservasDisponibles",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"web",
+										"reservasDisponibles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "obtenerCapacidadViaje",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8081/api/web/reservasDisponibles/capacidad",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"web",
+										"reservasDisponibles",
+										"capacidad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ObtenerTodasReservas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8081/api/web/",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"web",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "borrarReserva",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8081/api/web/reservas/1",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"web",
+										"reservas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "borrarAutobus",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8081/api/web/reservasDisponibles/1",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"web",
+										"reservasDisponibles",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Reserva Web 8082",
+					"item": [
+						{
+							"name": "RealizarReserva",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvbG9naW4iLCJleHAiOjE2NDkxNTgxOTh9.4hxjEbdP82H4-WKiiVbKbNSq4u_E4gInMpFGxlqOzAw",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ciudadDestino\":\"Barcelona\",\r\n    \"nombre\":\"Jose\",\r\n    \"apellido\":\"Garcia\",\r\n    \"telefono\":\"666666666\",\r\n    \"email\":\"josemanuel.garcia@bosonit.com\",\r\n    \"fechaReserva\":\"2022-04-28\",\r\n    \"horaReserva\":\"12\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "www.localhost:8082/api/empresa/reservas",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"empresa",
+										"reservas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "consultarReservasDisponibles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8082/api/empresa/reservasDisponibles",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"empresa",
+										"reservasDisponibles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "obtenerCapacidadViaje",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8082/api/web/reservasDisponibles/capacidad",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"web",
+										"reservasDisponibles",
+										"capacidad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ObtenerTodasReservas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8082/api/web/reservas",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"web",
+										"reservas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "borrarAutobus",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8082/api/web/reservasDisponibles/1",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"web",
+										"reservasDisponibles",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "borrarReserva",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8082/api/web/reservas/1",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"web",
+										"reservas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "BackEmpresa",
+			"item": [
+				{
+					"name": "Reserva",
+					"item": [
+						{
+							"name": "RealizarReserva",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvbG9naW4iLCJleHAiOjE2NDkxNTgxOTh9.4hxjEbdP82H4-WKiiVbKbNSq4u_E4gInMpFGxlqOzAw",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ciudadDestino\":\"Jaen\",\r\n    \"nombre\":\"Jose\",\r\n    \"apellido\":\"Garcia\",\r\n    \"telefono\":\"666666666\",\r\n    \"email\":\"josemanuel.garcia@bosonit.com\",\r\n    \"fechaReserva\":\"2022-04-19\",\r\n    \"horaReserva\":\"7.30\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "www.localhost:8081/api/reservas",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"reservas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "consultarReservasDisponibles",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvbG9naW4iLCJleHAiOjE2NDkxNTczMjd9.qNfGjMYYHnukhtC61-3y39PzmPbr0oJykfgqXOnwvug",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "www.localhost:8080/api/reservasDisponibles",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"reservasDisponibles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "obtenerCapacidadViaje",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\r\n    \"ciudadDestino\":\"Sevilla\",\r\n        \"hora\":\"7.30\",\r\n    \"fecha\":\"2022-04-19\"\r\n\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "www.localhost:8080/api/reservasDisponibles/capacidad",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"reservasDisponibles",
+										"capacidad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ObtenerTodasReservas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8080/api/",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "borrarReserva",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8080/api/reservas/2",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"reservas",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "borrarAutobus",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "www.localhost:8081/api/reservasDisponibles/1",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"reservasDisponibles",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Correo",
+					"item": [
+						{
+							"name": "GetAllCorreos",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "obtenerFiltradoCorreo",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "josemgarcia999",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "www.localhost:8080/api/login",
+							"host": [
+								"www",
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

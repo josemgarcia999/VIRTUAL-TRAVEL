@@ -15,7 +15,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({ METHOD, FIELD, ANNOTATION_TYPE })
 @Retention(RUNTIME)
 public @interface horaReserva {
-    String message() default "{horaReservaValida.mensajePorDefecto}";
+    String message() default "Hora no disponible";
 
     Class<?>[] groups() default {};
 

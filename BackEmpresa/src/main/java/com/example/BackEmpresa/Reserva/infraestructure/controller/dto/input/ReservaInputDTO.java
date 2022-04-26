@@ -18,9 +18,9 @@ import java.util.Date;
 public class ReservaInputDTO {
 
     @NotNull
+    @checkCiudadDestino
     String ciudadDestino;
     @NotNull
-    @checkCiudadDestino
     String nombre;
     @NotNull
     String apellido;

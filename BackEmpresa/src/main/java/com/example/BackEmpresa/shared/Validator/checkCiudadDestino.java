@@ -10,11 +10,11 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Documented
-@Constraint(validatedBy = ReservaInputDTOValidator.class)
+@Constraint(validatedBy = ValorCiudadDestinoValidator.class)
 @Target({ METHOD, FIELD, ANNOTATION_TYPE })
 @Retention(RUNTIME)
 public @interface checkCiudadDestino {
-    String message() default "{horaReservaValida.mensajePorDefecto}";
+    String message() default "Destino no disponible";
 
     Class<?>[] groups() default {};
 

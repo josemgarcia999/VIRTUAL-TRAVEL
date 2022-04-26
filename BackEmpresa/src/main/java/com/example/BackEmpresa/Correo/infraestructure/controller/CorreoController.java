@@ -14,19 +14,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/correo")
+@RequestMapping("api/empresa/correos")
 public class CorreoController {
 
     @Autowired
     ICorreo correoService;
 
-    @GetMapping
+    @GetMapping("/filtrar")
     public ResponseEntity<CorreoListaOutputDto> obtenerCorreos(@RequestBody BuscarCorreoDto datos){
             return ResponseEntity.ok().body(correoService.obtenerCorreos(datos.getCiudadDestino(), datos.getFechaSuperior(),datos.getFechaInferior(),datos.getHoraSuperior(),datos.getHoraInferior()));
     }
     @PutMapping
     public ResponseEntity<CorreoOutputDto> reenviarCorreo(@RequestBody CorreoInputDto correo){
         return ResponseEntity.ok().body(correoService.reenviarEmail(correo));
+    }
+
+
+    @GetMapping
+    public ResponseEntity<CorreoListaOutputDto> getAllCorreos(){
+        return ResponseEntity.ok().body(correoService.getAllCorreos());
     }
 
 

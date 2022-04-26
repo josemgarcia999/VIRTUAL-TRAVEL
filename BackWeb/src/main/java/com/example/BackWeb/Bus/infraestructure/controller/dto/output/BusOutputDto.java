@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -16,14 +18,21 @@ public class BusOutputDto {
     Float hora;
     Date fecha;
     Integer capacidad;
+    List<String> reservasRealizadas;
 
-public BusOutputDto(BusEntity bus){
-    setId(bus.getId());
-    setDia(bus.getCiudadDestino());
-    setHora(bus.getHora());
-    setFecha(bus.getFecha());
-    setCapacidad(bus.getCapacidad());
+    public BusOutputDto(BusEntity bus) {
+        setId(bus.getId());
+        setDia(bus.getCiudadDestino());
+        setHora(bus.getHora());
+        setFecha(bus.getFecha());
+        setCapacidad(bus.getCapacidad());
+        reservasRealizadas = new ArrayList<>();
+        for (int i = 0; i < bus.getReservasAsignadas().size(); i++) {
+            reservasRealizadas.add(bus.getReservasAsignadas().get(i).toString());
+        }
+
+
+    }
 
 }
 
-}

@@ -22,12 +22,15 @@ public class CorreoInputDto {
     Date fechaReserva;
     @NotNull (message = "Hora reserva no puede ser nulo")
     Float horaReserva;
+    Integer idAutobus;
+
 
     public CorreoInputDto(ReservaOutputDTO reserva){
         setCiudadDestino(reserva.getCiudadDestino());
         setEmail(reserva.getEmail());
         setFechaReserva(reserva.getFechaReserva());
         setHoraReserva(reserva.getHoraReserva());
+        setIdAutobus(reserva.getIdBus());
     }
 
 }
