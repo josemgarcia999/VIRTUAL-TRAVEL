@@ -1,5 +1,6 @@
 package com.example.BackEmpresa.Reserva.application;
 
+import ch.qos.logback.core.util.FixedDelay;
 import com.example.BackEmpresa.Bus.domain.BusEntity;
 import com.example.BackEmpresa.Bus.infraestructure.repository.BusRepo;
 import com.example.BackEmpresa.Correo.application.ICorreo;
@@ -11,11 +12,13 @@ import com.example.BackEmpresa.Reserva.infraestructure.repository.ReservaRepo;
 import com.example.BackEmpresa.shared.exceptions.NotFoundException;
 import com.example.BackEmpresa.shared.exceptions.UnprocesableException;
 import com.example.BackEmpresa.shared.kafka.KafkaMessageProducer;
+import org.hibernate.annotations.Proxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -25,10 +28,10 @@ import java.util.TimerTask;
 
 @Service
 @EnableScheduling
+@Proxy(lazy = false)
 public class ReservaService implements IReserva {
 
 
-    private int contadorActualizar = 0;
 
     @Autowired
     ReservaRepo reservaRepo;
@@ -42,7 +45,7 @@ public class ReservaService implements IReserva {
     @Autowired
     KafkaMessageProducer kafkaMessageProducer;
 
-    @Override//reservainputdto se corresponde con el mensaje asincrono de kafka que vamos a enviar desde backweb
+    @Override//reservainputdto se corresponde con el mensaje asincrono de kafka que vamos a enviar desde backweb)
     public ReservaOutputDTO realizarReserva(ReservaInputDTO reservaInputDTO) {
         if (reservaRepo.findByCiudadDestinoAndEmailAndFechaReservaAndHoraReserva(reservaInputDTO.getCiudadDestino(), reservaInputDTO.getEmail(), reservaInputDTO.getFechaReserva(), reservaInputDTO.getHoraReserva()) == null) {
             ReservaEntity reserva = new ReservaEntity(reservaInputDTO);
@@ -66,7 +69,8 @@ public class ReservaService implements IReserva {
             reservaRepo.saveAndFlush(reserva);
             ReservaOutputDTO reservaOutputDTO = new ReservaOutputDTO(reserva);
             correoService.sendEmail(reservaOutputDTO);
-           // kafkaMessageProducer.sendMessageTopic1("mytopic_2", reservaInputDTO);
+
+            // kafkaMessageProducer.sendMessageTopic1("mytopic_2", reservaInputDTO);
 
 
             return reservaOutputDTO;

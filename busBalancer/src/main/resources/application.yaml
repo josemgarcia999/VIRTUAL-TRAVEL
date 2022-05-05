@@ -6,7 +6,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      default-zone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka
   instance:
     hostname: localhost
 
@@ -21,7 +21,3 @@ spring:
           uri: lb://BackWeb
           predicates:
             - Path=/api/web/**
-        - id: BackEmpresa
-          uri: lb://BackEmpresa
-          predicates:
-            - Path=/api/empresa/**

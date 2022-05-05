@@ -1,0 +1,187 @@
+version: '3.8'
+services:
+  eureka-server:
+    image: eurekadocker
+    container_name: eureka-server
+    build:
+      context: ./eurekaBus
+      dockerfile: Dockerfile
+    ports:
+    - "8761:8761"
+    
+  apigateway:
+    image: busbalancerdocker
+    container_name: apigateway
+    build: ./busBalancer
+    ports:
+      - "8083:8083"
+    links:
+      - "eureka-server"
+    depends_on:
+      - eureka-server
+    environment:
+      eureka.client.service-url.defaultZone: http://eureka-server:8761/eureka
+
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 22181:2181
+  
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - 29092:29092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://kafka:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      
+  init-kafka:
+    image: confluentinc/cp-kafka:6.1.1
+    depends_on:
+      - kafka
+    entrypoint: [ '/bin/sh', '-c' ]
+    command: |
+      "
+      # blocks until kafka is reachable
+      kafka-topics --bootstrap-server kafka:29092 --list
+
+      echo -e 'Creating kafka topics'
+      kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic mytopic_1 --replication-factor 1 --partitions 1
+      kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic mytopic_2 --replication-factor 1 --partitions 1
+
+      echo -e 'Successfully created the following topics:'
+      kafka-topics --bootstrap-server kafka:29092 --list
+      "
+      
+  empresadb :
+    image: postgres:14.2
+    restart: always
+    container_name: empresadb
+    environment:
+      - POSTGRES_USER=jose
+      - POSTGRES_PASSWORD=jose
+      - POSTGRES_DB=test 
+    ports:
+      - '5433:5432'
+
+  web1db :
+    image: postgres:14.2
+    restart: always
+    container_name: web1db
+    environment:
+      - POSTGRES_USER=jose
+      - POSTGRES_PASSWORD=jose
+      - POSTGRES_DB=test
+    ports:
+      - '5434:5432'
+
+  web2db :
+    image: postgres:14.2
+    restart: always
+    container_name: web2db
+    environment:
+      - POSTGRES_USER=jose
+      - POSTGRES_PASSWORD=jose
+      - POSTGRES_DB=test
+    ports:
+      - '5435:5432'
+      
+  
+  BackEmpresaApplication:    
+    image: backempresaapplication
+    container_name: backempresaapplication
+    build:
+      context: .\BackEmpresa
+      dockerfile: Dockerfile
+
+    environment:
+      - spring.datasource.url=jdbc:postgresql://empresadb:5432/test
+      - spring.kafka.bootstrap-servers=kafka:29092
+    
+    ports:
+      - '8080:8080'
+      
+    depends_on:
+      - empresadb
+      - kafka
+      - eureka-server
+      - apigateway
+  BackWeb8082Application:    
+    image: backwebdocker
+    container_name: backweb8082
+    build:
+      context: .\BackWeb
+      dockerfile: Dockerfile
+
+    environment:
+      - spring.datasource.url=jdbc:postgresql://web2db:5432/test
+      - spring.kafka.bootstrap-servers=kafka:29092
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - message.group.name=groupId3
+      - server.port=8082
+    
+    ports:
+      - '8082:8082'
+      
+    depends_on:
+      - web2db
+      - kafka
+      - eureka-server
+      - apigateway
+
+  BackWeb8081Application:    
+    image: backwebdocker
+    container_name: backweb8081
+    build:
+      context: .\BackWeb
+      dockerfile: Dockerfile
+
+    environment:
+      - spring.datasource.url=jdbc:postgresql://web1db:5432/test
+      - spring.kafka.bootstrap-servers=kafka:29092
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - message.group.name=groupId2
+      - server.port=8081
+    
+    ports:
+      - '8081:8081'
+      
+    depends_on:
+      - web2db
+      - kafka
+      - eureka-server
+      - apigateway      
+      
+      
+  BackEmpresaApplication:    
+    image: backempresaapplication
+    container_name: backempresaapplication
+    build:
+      context: .\BackEmpresa
+      dockerfile: Dockerfile
+
+    environment:
+      - spring.datasource.url=jdbc:postgresql://empresadb:5432/test
+      - spring.kafka.bootstrap-servers=kafka:29092
+
+    
+    ports:
+      - '8080:8080'
+      
+    depends_on:
+      - empresadb
+      - kafka
+      - eureka-server
+      - apigateway
+                  
