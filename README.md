@@ -23,9 +23,13 @@ Las posibles hora de salida de los autobuses son:
 - 12
 - 16
 - 20
+
+
 Existiran principalmente dos tipos de back: BackEmpresa y BackWeb
--Backweb: Será el servidor que recibirá las peticiones del front donde se realizan las reservas. En nuestro caso, usaremos PostMan para realizar las peticiones.
+
+- Backweb: Será el servidor que recibirá las peticiones del front donde se realizan las reservas. En nuestro caso, usaremos PostMan para realizar las peticiones.
 - BackEmpresa: Será el servidor de la aplicación instalada en la empresa. Se comunicará con BackWeb pero tamboén podrá recibir reservas externas. Será el encargado de realizar la confirmacion de la reserva mediante el envío de un correo electronico.
+
 
 Cada BackWeb tendrá su propia BBDD independiente. Lo mismo ocurrirá con BackEmpresa.
 
