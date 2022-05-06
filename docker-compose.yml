@@ -1,18 +1,14 @@
 version: '3.8'
 services:
   eureka-server:
-    image: eurekadocker
+    image: josemgarcia999/eurekadocker
     container_name: eureka-server
-    build:
-      context: ./eurekaBus
-      dockerfile: Dockerfile
     ports:
     - "8761:8761"
     
   apigateway:
-    image: busbalancerdocker
+    image: josemgarcia999/busbalancerdocker
     container_name: apigateway
-    build: ./busBalancer
     ports:
       - "8083:8083"
     links:
@@ -47,7 +43,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       
   init-kafka:
-    image: confluentinc/cp-kafka:6.1.1
+    image: confluentinc/cp-kafka:latest
     depends_on:
       - kafka
     entrypoint: [ '/bin/sh', '-c' ]
@@ -99,7 +95,7 @@ services:
       
   
   BackEmpresaApplication:    
-    image: backempresaapplication
+    image: josemgarcia999/backempresaapplication
     container_name: backempresaapplication
     build:
       context: .\BackEmpresa
@@ -118,11 +114,9 @@ services:
       - eureka-server
       - apigateway
   BackWeb8082Application:    
-    image: backwebdocker
+    image: josemgarcia999/backwebapplication
+    
     container_name: backweb8082
-    build:
-      context: .\BackWeb
-      dockerfile: Dockerfile
 
     environment:
       - spring.datasource.url=jdbc:postgresql://web2db:5432/test
@@ -141,12 +135,10 @@ services:
       - apigateway
 
   BackWeb8081Application:    
-    image: backwebdocker
+    image: josemgarcia999/backwebapplication
+    
     container_name: backweb8081
-    build:
-      context: .\BackWeb
-      dockerfile: Dockerfile
-
+  
     environment:
       - spring.datasource.url=jdbc:postgresql://web1db:5432/test
       - spring.kafka.bootstrap-servers=kafka:29092
@@ -163,25 +155,3 @@ services:
       - eureka-server
       - apigateway      
       
-      
-  BackEmpresaApplication:    
-    image: backempresaapplication
-    container_name: backempresaapplication
-    build:
-      context: .\BackEmpresa
-      dockerfile: Dockerfile
-
-    environment:
-      - spring.datasource.url=jdbc:postgresql://empresadb:5432/test
-      - spring.kafka.bootstrap-servers=kafka:29092
-
-    
-    ports:
-      - '8080:8080'
-      
-    depends_on:
-      - empresadb
-      - kafka
-      - eureka-server
-      - apigateway
-                  
