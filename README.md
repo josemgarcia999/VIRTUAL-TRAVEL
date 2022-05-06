@@ -1,6 +1,6 @@
 # VISUAL-TRAVEL
 ## Formacion Back-End. Ejercicio Final
-![Imagen](https://drive.google.com/file/d/1J-w5RZNWq4LlBGF3dCOgtT3hiuXaIGP2/view?usp=sharing)
+![Imagen](https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/bosonit.png)
 
 
 Visual-Travel es un ejercicio en el que aplicaremos los conceptos aprendidos durante
