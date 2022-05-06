@@ -34,10 +34,10 @@ Existiran principalmente dos tipos de back: BackEmpresa y BackWeb
 Cada BackWeb tendrá su propia BBDD independiente. Lo mismo ocurrirá con BackEmpresa.
 
 ## Tecnologías utilizadas
-<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/springboot.png" style="width:50;height:50">
-<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/kafka.png" style="width:50;height:50">
-<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/eureka.png" style="width:50;height:50">
-<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/docker.png" style="width:50;height:50">
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/springboot.png" width="50";height="50">
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/kafka.png" width="50";height="50">
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/eureka.png" width="50";height="50">
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/docker.png" width="50";height="50">
 
 
 
