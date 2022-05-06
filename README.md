@@ -35,8 +35,14 @@ Cada BackWeb tendrá su propia BBDD independiente. Lo mismo ocurrirá con BackEm
 
 ## Tecnologías utilizadas
 ![SpringBoot] (https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/bosonit.png)
+
+
 ![Kafka] (https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/kafka.png)
+
+
 ![Eureka] (https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/eureka.png)
+
+
 ![Docker] (https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/docker.png)
 
 
