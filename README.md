@@ -35,7 +35,16 @@ Cada BackWeb tendrá su propia BBDD independiente. Lo mismo ocurrirá con BackEm
 
 ## Tecnologías utilizadas
 
-<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/springboot.png" width="48">
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/springboot.png" width="75">
+
+
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/kafka.png" width="48">
+
+
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/eureka.png" width="48">
+
+
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/docker.png" width="48">
 
 
 
