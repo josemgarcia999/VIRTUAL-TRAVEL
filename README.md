@@ -35,16 +35,16 @@ Cada BackWeb tendrá su propia BBDD independiente. Lo mismo ocurrirá con BackEm
 
 ## Tecnologías utilizadas
 
-<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/springboot.png" width="75">
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/springboot.png" width="150"> Implementar toda la lógica de la aplicación.
 
 
-<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/kafka.png" width="48">
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/kafka.png" width="150"> Realizar comunicación asíncrona entre los diferentes Backs de la aplicación.
 
 
-<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/eureka.png" width="48">
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/eureka.png" width="150"> Balanceador de carga para distribuir las peticiones entre los diferentes BackWebs
 
 
-<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/docker.png" width="48">
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/docker.png" width="150"> Exportar la aplicación y gestionar todos los servicios de cara al exterior.
 
 
 
