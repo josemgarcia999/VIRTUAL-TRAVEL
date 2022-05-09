@@ -63,8 +63,8 @@ Para realizar pruebas he adjuntado una colección de postman con los endpoints p
 ## Análisis de código
 En esta sección voy a especificar la distribución del código y dar una breve explicación sobre cada módulo.
 Inicialmente distinguimos cuatro paquetes:
-- BackEmpresa: Se corresponde con el back asociado a la empresa de viajes. Tendrá su propia base de datos independiente y se encargará de realizar la confirmación de una reserva, tanto como si es aceptada como si no. Además tendrá un tópico asociado para actualizar las bases de datos de los backwebs que estén conectados, con reservas añadidas a backempresa que tengan una fecha superior a la fecha actual. <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/contenidobackempresa.png" align="center" width="300">
-
+- BackEmpresa: Se corresponde con el back asociado a la empresa de viajes. Tendrá su propia base de datos independiente y se encargará de realizar la confirmación de una reserva, tanto como si es aceptada como si no. Además tendrá un tópico asociado para actualizar las bases de datos de los backwebs que estén conectados, con reservas añadidas a backempresa que tengan una fecha superior a la fecha actual. 
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/contenidobackempresa.png" align="center" width="300">
 BackEmpresa está compuesto por cuatro entidades: 
 
 
