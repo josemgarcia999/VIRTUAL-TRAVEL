@@ -35,11 +35,11 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
         customAuthenticationFilter.setFilterProcessesUrl("/api/empresa/login");
         http.csrf().disable();
-        http.authorizeRequests().antMatchers("/**").permitAll();//comentar cuando acabemos ejercicio, permite no tener que estar poniendo token todo el rato
+        //http.authorizeRequests().antMatchers("/**").permitAll();//comentar cuando acabemos ejercicio, permite no tener que estar poniendo token todo el rato
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        //http.authorizeRequests().antMatchers("/api/login").permitAll();
-        //http.authorizeRequests().antMatchers(GET,"/api/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN");
-        //http.authorizeRequests().antMatchers("/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeRequests().antMatchers("/api/empresa/login").permitAll();
+        http.authorizeRequests().antMatchers(GET,"/api/web/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN");
+        http.authorizeRequests().antMatchers("/**").hasAnyAuthority("ROLE_ADMIN");
 
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
