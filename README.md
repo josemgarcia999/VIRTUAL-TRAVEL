@@ -67,8 +67,12 @@ Después de instalar correctamente la aplicación en docker, podemos empezar a r
 
 Como podemos observar, principalmente dividimos la colección en dos grandes grupos. BackWeb y BackEmpresa. En primer lugar voy a explicar lo relacionado con BackWeb.
 <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/principalWeb.png">
+
+
 Para todos los backwebs son los mismos endpoints pero en mi caso, voy a explicarlos para "Reserva Web 8083" puesto que es el que se corresponde con el balanceador de carga y este se encargará de alternar entre las dos webs que tenemos en la aplicación
-- **RealizarReserva:** La url es:*www.localhost:8083/api/web/reservas*. Se encargará de realizar una reserva, requerirá una ReservaInputDto por un body cuyo formato es el siguiente: <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/reservainputdto.png">. 
+- **RealizarReserva:** La url es:*www.localhost:8083/api/web/reservas*. Se encargará de realizar una reserva, requerirá una ReservaInputDto por un body cuyo formato es el siguiente: <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/reservainputdto.png">.
+
+
 - Hay que tener en cuenta las restricciones de hora y de ciudades disponibles ya que si no, no se hará correctamente la reserva.
 - **consultarReservaDisponible:** La url es: *www.localhost:8083/api/web/reservasDisponibles*. Con este endpoint lo que haremos será listar aquellas reservas que han sido aceptadas.
 - **obtenerCapacidadViaje:** La url es: *www.localhost:8083/api/web/reservasDisponibles/capacidad*. Se encarga de obtener el número de plazas disponibles de un autobús concreto.
@@ -76,7 +80,7 @@ Para todos los backwebs son los mismos endpoints pero en mi caso, voy a explicar
 - **borrarReserva(*):** La url es: *www.localhost:8083/api/web/reservas/{id}* Borra la reserva correspondiente al id pasado por la parte variable del path.
 - **borrarAutobus(*)** La url es: *www.localhost:8083/api/web/reservasDisponibles/{id}* Borra el autobús correspondiente a ese id.
 
-**NOTA:** Aunque estén implementados, yo nos los he utilizado puesto que la funcionalidad que he implementado consiste en que cuando borre una reserva desde backempresa, se borren en los backwebs en caso de que se encuentre en su base de datos. Están hechos para comprobar que la implementación estaba correcta.
+**NOTA(*):** Aunque estén implementados, yo nos los he utilizado puesto que la funcionalidad que he implementado consiste en que cuando borre una reserva desde backempresa, se borren en los backwebs en caso de que se encuentre en su base de datos. Están hechos para comprobar que la implementación estaba correcta.
 
 ## Análisis de código
 En esta sección voy a especificar la distribución del código y dar una breve explicación sobre cada módulo.
