@@ -76,7 +76,7 @@ Para todos los backwebs son los mismos endpoints pero en mi caso, voy a explicar
 - <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/reservainputdto.png">.
 
 
-- Hay que tener en cuenta las restricciones de hora y de ciudades disponibles ya que si no, no se hará correctamente la reserva.
+- Hay que tener en cuenta las restricciones de hora y de ciudades disponibles ya que si no, no se hará correctamente la reserva. Además, se tiene que añadir la reserva en los demás backs (tanto web como empresa) ya que cuando se cree la reserva se enviará mediante kafka al tópico en el que están escuchando los backs.
 - **consultarReservaDisponible:** La url es: *www.localhost:8083/api/web/reservasDisponibles*. Con este endpoint lo que haremos será listar aquellas reservas que han sido aceptadas.
 - **obtenerCapacidadViaje:** La url es: *www.localhost:8083/api/web/reservasDisponibles/capacidad*. Se encarga de obtener el número de plazas disponibles de un autobús concreto. Requiere que le pasemos por body la ciudadDestino, la fecha y la hora. El formato es el siguiente:
 - <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/formatogetcapacidad.png">.
@@ -101,7 +101,19 @@ El funcionamiento de los endpoints de reserva en BackEmpresa es idéntico a Back
 
 <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/token.png">.
 
-Por el header pasaremos el token generado de la misma forma que en la imagen anterior, en caso de que no lo pasemos o el usuario no tenga permisos se nos indicará con un error **403 forbidden** en el postman.
+Por el header pasaremos el token generado de la misma forma que en la imagen anterior, en caso de que no lo pasemos o el usuario no tenga permisos se nos indicará con un error **403 forbidden** en postman.
+
+Otra diferencia con respecto a BackWeb es que al guardar una reserva en backEmpresa no se actualizará de forma inmediata en los backwebs, si no que al pasar 60 segundos se mandarán las reservas que sea posteriores a la fecha actual, ya que no queremos actualizar los backwebs con reservas obsoletas (pasadas de fecha).
+
+Además, ahora al borrar una reserva de BackEmpresa, se eliminará de los BackWeb y en caso de que esté vacío se eliminará el autobús. 
+****
+
+
+Los endpoints de correo son los siguientes:
+- **GetAllCorreos:** La url es: *www.localhost:8080/api/empresa/correos* . Se encargará de mostrar el historial de confirmaciones realizadas.
+- **obtenerFiltradoCorreos:** La url es: *www.localhost:8080/api/empresa/correos/filtrar*. Se encargará de mostrar los correos de confirmación de un destino entre unas fechas y horas concretas. Requerirá un body cuyo formato es el siguiente:
+- <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/filtrado.png">.
+
 
 
 
