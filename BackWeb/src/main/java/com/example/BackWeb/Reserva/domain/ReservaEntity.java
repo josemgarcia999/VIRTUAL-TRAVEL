@@ -15,6 +15,7 @@ import java.util.Date;
 @Data
 @Table(name = "Reserva")
 @NoArgsConstructor
+
 public class ReservaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,7 +58,7 @@ public class ReservaEntity {
     @Override
     public String toString() {
         String datosReserva = "Datos del cliente:" +
-                " Plaza Asignada: " + busAsignado.getReservasAsignadas().size() + "↵" +
+                " Plaza Asignada: " + busAsignado.getReservasAsignadas().size()  +
                 ", Nombre: " + nombre +
                 ", apellido: " + apellido+
                 ", telefono: " + telefono +

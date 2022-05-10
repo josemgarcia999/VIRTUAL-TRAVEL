@@ -115,7 +115,10 @@ public class ReservaService implements IReserva {
 
     @Override
     public void deleteById(Integer id) {
+        ReservaEntity reserva = reservaRepo.getById(id);
         BusEntity bus = reservaRepo.getById(id).getBusAsignado();
+        ReservaInputDTO mensaje = new ReservaInputDTO(reserva.getCiudadDestino(),reserva.getEmail(),reserva.getFechaReserva(),reserva.getHoraReserva());
+        kafkaMessageProducer.sendMessageTopic2("mytopic_2",mensaje);
         reservaRepo.deleteById(id);
         if(bus.getReservasAsignadas().size() == 0){
             reservasDisponiblesRepo.deleteById(bus.getId());
@@ -123,7 +126,6 @@ public class ReservaService implements IReserva {
             bus.setCapacidad(bus.getCapacidad() + 1);
         }
         reservasDisponiblesRepo.flush();
-
     }
 
     @Override

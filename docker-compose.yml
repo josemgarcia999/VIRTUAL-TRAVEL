@@ -97,9 +97,6 @@ services:
   BackEmpresaApplication:    
     image: josemgarcia999/backempresaapplication
     container_name: backempresaapplication
-    build:
-      context: .\BackEmpresa
-      dockerfile: Dockerfile
 
     environment:
       - spring.datasource.url=jdbc:postgresql://empresadb:5432/test
@@ -115,7 +112,6 @@ services:
       - apigateway
   BackWeb8082Application:    
     image: josemgarcia999/backwebapplication
-    
     container_name: backweb8082
 
     environment:

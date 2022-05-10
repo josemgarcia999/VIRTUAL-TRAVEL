@@ -34,7 +34,7 @@ public class BusEntity {
         setCiudadDestino(ciudadDestino);
         setHora(hora);
         setFecha(fecha);
-        setCapacidad(3);
+        setCapacidad(40);
     }
 
 }

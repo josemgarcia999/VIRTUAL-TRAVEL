@@ -56,4 +56,15 @@ public class ReservaInputDTO {
         setFechaReserva(reserva.getFechaReserva());
     }
 
+    public ReservaInputDTO(String ciudadDestino,String email, Date fechaReserva, Float horaReserva){
+        setCiudadDestino(ciudadDestino);
+        setEmail(email);
+        setFechaReserva(fechaReserva);
+        setHoraReserva(horaReserva);
+        setNombre("Borrado");
+        setApellido("Borrado");
+        setTelefono("Borrado");
+
+    }
+
 }
