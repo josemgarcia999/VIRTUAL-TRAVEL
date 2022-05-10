@@ -51,12 +51,13 @@ Cada BackWeb tendrá su propia BBDD independiente. Lo mismo ocurrirá con BackEm
 
 
 
-## Funcionamiento
-En primer lugar, para iniciar la aplicación lo que haremos será descargar el proyecto y ejecutar el archivo docker-compose.yml para generar los contenedores correspondientes y arrancar la aplicación.
+## Manual de usuario
+En primer lugar, para iniciar la aplicación lo que haremos será descargar el proyecto y ejecutar el archivo docker-compose.yml para generar los contenedores correspondientes y arrancar la aplicación.(requiere tener docker instalado)
 Para ello, en la ruta de la raiz del proyecto, pondremos el siguiente comando: 
 ```sh
 docker-compose up -d
 ```
+Tras esto, en la app de docker nos encontraremos esto:
 
 Para realizar pruebas he adjuntado una colección de postman con los endpoints para interactuar con la aplicación. Bastará con importarla en postman y lanzar la aplicación y comenzar a trabajar con ella.
 
