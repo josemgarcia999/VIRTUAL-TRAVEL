@@ -66,6 +66,8 @@ Después de instalar correctamente la aplicación en docker, podemos empezar a r
 <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/postman.png">
 
 Como podemos observar, principalmente dividimos la colección en dos grandes grupos. BackWeb y BackEmpresa. En primer lugar voy a explicar lo relacionado con BackWeb.
+
+
 <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/principalWeb.png">
 
 
