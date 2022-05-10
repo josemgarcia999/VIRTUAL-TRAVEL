@@ -62,9 +62,10 @@ Tras ejecutar este comando, en la app de docker nos encontraremos esto:
 Como se puede observar, se crean los contenedores para las base de datos de cada back, kafka para la mensajería asíncrona, eureka para el balanceo de carga junto al gateway y las instancias de los diferentes back, tanto webs como empresa.
 
 Después de instalar correctamente la aplicación en docker, podemos empezar a realizar pruebas de la misma. Para ello, he adjuntado una colección de postman con los endpoints implementados, que voy a explicar a continuación.
+
 <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/postman.png">
 
-Para realizar pruebas he adjuntado una colección de postman con los endpoints para interactuar con la aplicación. Bastará con importarla en postman y lanzar la aplicación y comenzar a trabajar con ella.
+
 
 ## Análisis de código
 En esta sección voy a especificar la distribución del código y dar una breve explicación sobre cada módulo.
