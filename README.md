@@ -72,7 +72,8 @@ Como podemos observar, principalmente dividimos la colección en dos grandes gru
 
 
 Para todos los backwebs son los mismos endpoints pero en mi caso, voy a explicarlos para "Reserva Web 8083" puesto que es el que se corresponde con el balanceador de carga y este se encargará de alternar entre las dos webs que tenemos en la aplicación
-- **RealizarReserva:** La url es:*www.localhost:8083/api/web/reservas*. Se encargará de realizar una reserva, requerirá una ReservaInputDto por un body cuyo formato es el siguiente: <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/reservainputdto.png">.
+- **RealizarReserva:** La url es:*www.localhost:8083/api/web/reservas*. Se encargará de realizar una reserva, requerirá una ReservaInputDto por un body cuyo formato es el siguiente: 
+- <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/reservainputdto.png">.
 
 
 - Hay que tener en cuenta las restricciones de hora y de ciudades disponibles ya que si no, no se hará correctamente la reserva.
