@@ -105,8 +105,8 @@ Por el header pasaremos el token generado de la misma forma que en la imagen ant
 
 Otra diferencia con respecto a BackWeb es que al guardar una reserva en backEmpresa no se actualizará de forma inmediata en los backwebs, si no que al pasar 60 segundos se mandarán las reservas que sea posteriores a la fecha actual, ya que no queremos actualizar los backwebs con reservas obsoletas (pasadas de fecha).
 
-Además, ahora al borrar una reserva de BackEmpresa, se eliminará de los BackWeb y en caso de que esté vacío se eliminará el autobús. 
-****
+Además, ahora al borrar una reserva de BackEmpresa, se eliminará de los BackWeb y en caso de que esté vacío se eliminará el autobús.
+**NOTA:** Está pensado solo para eliminar reservas desde backempresa y que se borre tambíen de los backwebs. En un futuro se podría añadir esta funcionalidad
 
 
 Los endpoints de correo son los siguientes:
@@ -114,24 +114,8 @@ Los endpoints de correo son los siguientes:
 - **obtenerFiltradoCorreos:** La url es: *www.localhost:8080/api/empresa/correos/filtrar*. Se encargará de mostrar los correos de confirmación de un destino entre unas fechas y horas concretas. Requerirá un body cuyo formato es el siguiente:
 - <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/filtrado.png">.
 
-
-
-
-
-
-
-
+De esta forma, tenemos una breve explicación del funciomamiento de la aplicación al completo y se ve como de forma sencilla mediante PostMan podemos someterla a diversas pruebas.
 
 
 ## Análisis de código
-En esta sección voy a especificar la distribución del código y dar una breve explicación sobre cada módulo.
-Inicialmente distinguimos cuatro paquetes:
-- BackEmpresa: Se corresponde con el back asociado a la empresa de viajes. Tendrá su propia base de datos independiente y se encargará de realizar la confirmación de una reserva, tanto como si es aceptada como si no. Además tendrá un tópico asociado para actualizar las bases de datos de los backwebs que estén conectados, con reservas añadidas a backempresa que tengan una fecha superior a la fecha actual. 
-<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/contenidobackempresa.png" align="center" width="300">
-BackEmpresa está compuesto por cuatro entidades: 
-
-
-- BackWeb: Cada backweb será una instancia de este paquete. Se encargará principalmente de realizar reservas y de comunicarlas a los demás backwebs y a backempresa mediante otro tópico para sincronizar las bases de datos de todos. Cada backweb tendrá su propia base de datos independiente.
-- BusBalancer: Balanceador de carga para distribuir las diferentes webs.
-- EurekaBus: Configuración del servidor de eureka para gestionar la realización del balanceo de carga.
 
