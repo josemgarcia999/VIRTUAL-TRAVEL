@@ -97,7 +97,7 @@ En primer lugar, al tener seguridad, lo que deberemos de hacer es loguearnos med
 
 Para probar la aplicación he creado dos usuarios, uno con Rol de administrador y otro con rol de usuario (josemgarcia999 y juanmy999 respectivamente). Accederemos a realizar el login mediante la siguiente url: *www.localhost:8080/api/empresa/login* y seleccionando el username y password como se ve en la foto. Si el usuario es correcto obtendremos dos tokens, en nuestro caso nos quedaremos con *access_token* que será el que nos servirá para poder realizarle peticiones a la API.
 
-El funcionamiento de los endpoints de reserva en BackEmpresa es idéntico a BackWeb con la diferencia de que en vez de ser *www.localhost:8083/api/web* *será *www.localhost:8080/api/empresa/* además de tener que usar el token generado anteriormente en el login de la siguiente forma:
+El funcionamiento de los endpoints de reserva en BackEmpresa es idéntico a BackWeb con la diferencia de que en vez de ser *www.localhost:8083/api/web* será *www.localhost:8080/api/empresa/* además de tener que usar el token generado anteriormente en el login de la siguiente forma:
 
 <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/token.png">.
 
