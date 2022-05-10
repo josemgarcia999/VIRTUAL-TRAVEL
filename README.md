@@ -57,8 +57,9 @@ Para ello, en la ruta de la raiz del proyecto, pondremos el siguiente comando:
 ```sh
 docker-compose up -d
 ```
-Tras esto, en la app de docker nos encontraremos esto:
-<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/contenedores.png" width="150"> Exportar la aplicación y gestionar todos los servicios de cara al exterior.
+Tras ejecutar este comando, en la app de docker nos encontraremos esto:
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/contenedores.png"> 
+
 
 Para realizar pruebas he adjuntado una colección de postman con los endpoints para interactuar con la aplicación. Bastará con importarla en postman y lanzar la aplicación y comenzar a trabajar con ella.
 
