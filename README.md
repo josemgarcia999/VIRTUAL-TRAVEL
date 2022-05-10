@@ -95,7 +95,7 @@ En primer lugar, al tener seguridad, lo que deberemos de hacer es loguearnos med
 
 <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/login.png">.
 
-Para probar la aplicación he creado dos usuarios, uno con Rol de administrador y otro con rol de usuario (josemgarcia999 y juanmy999 respectivamente). Accederemos a realizar el login mediante la siguiente url y seleccionando el username y password como se ve en la foto. Si el usuario es correcto obtendremos dos tokens, en nuestro caso nos quedaremos con *access_token* que será el que nos servirá para poder realizarle peticiones a la API.
+Para probar la aplicación he creado dos usuarios, uno con Rol de administrador y otro con rol de usuario (josemgarcia999 y juanmy999 respectivamente). Accederemos a realizar el login mediante la siguiente url: *www.localhost:8080/api/empresa/login* y seleccionando el username y password como se ve en la foto. Si el usuario es correcto obtendremos dos tokens, en nuestro caso nos quedaremos con *access_token* que será el que nos servirá para poder realizarle peticiones a la API.
 
 
 
