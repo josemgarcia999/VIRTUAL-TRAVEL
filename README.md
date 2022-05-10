@@ -86,6 +86,21 @@ Para todos los backwebs son los mismos endpoints pero en mi caso, voy a explicar
 
 **NOTA(*):** Aunque estén implementados, yo nos los he utilizado puesto que la funcionalidad que he implementado consiste en que cuando borre una reserva desde backempresa, se borren en los backwebs en caso de que se encuentre en su base de datos. Están hechos para comprobar que la implementación estaba correcta.
 
+Tras ver BackWeb, procedo a explicar brevemente el funcionamiento de BackEmpresa, aunque el funcionamiento es muy similar al de los backwebs:
+
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/backempresa.png">.
+
+Como se puede ver, la carpeta reserva tiene los mismos endpoints que backweb solo que cambia la url, además de una carpeta para los correos y un login.
+En primer lugar, al tener seguridad, lo que deberemos de hacer es loguearnos mediante este endpoint.
+
+<img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/login.png">.
+
+Para probar la aplicación he creado dos usuarios, uno con Rol de administrador y otro con rol de usuario (josemgarcia999 y juanmy999 respectivamente). Accederemos a realizar el login mediante la siguiente url y seleccionando el username y password como se ve en la foto. Si el usuario es correcto obtendremos dos tokens, en nuestro caso nos quedaremos con *access_token* que será el que nos servirá para poder realizarle peticiones a la API.
+
+
+
+
+
 ## Análisis de código
 En esta sección voy a especificar la distribución del código y dar una breve explicación sobre cada módulo.
 Inicialmente distinguimos cuatro paquetes:
