@@ -78,7 +78,8 @@ Para todos los backwebs son los mismos endpoints pero en mi caso, voy a explicar
 
 - Hay que tener en cuenta las restricciones de hora y de ciudades disponibles ya que si no, no se hará correctamente la reserva.
 - **consultarReservaDisponible:** La url es: *www.localhost:8083/api/web/reservasDisponibles*. Con este endpoint lo que haremos será listar aquellas reservas que han sido aceptadas.
-- **obtenerCapacidadViaje:** La url es: *www.localhost:8083/api/web/reservasDisponibles/capacidad*. Se encarga de obtener el número de plazas disponibles de un autobús concreto.
+- **obtenerCapacidadViaje:** La url es: *www.localhost:8083/api/web/reservasDisponibles/capacidad*. Se encarga de obtener el número de plazas disponibles de un autobús concreto. Requiere que le pasemos por body la ciudadDestino, la fecha y la hora. El formato es el siguiente:
+- <img src="https://github.com/josemgarcia999/VIRTUAL-TRAVEL/blob/main/media/formatogetcapacidad.png">.
 - **obtenerTodasReservas:** La url es: *www.localhost:8083/api/web/*. Devuelve todas las reservas, ya sean aceptadas o canceladas porque el autobús esté lleno.
 - **borrarReserva(*):** La url es: *www.localhost:8083/api/web/reservas/{id}* Borra la reserva correspondiente al id pasado por la parte variable del path.
 - **borrarAutobus(*)** La url es: *www.localhost:8083/api/web/reservasDisponibles/{id}* Borra el autobús correspondiente a ese id.
