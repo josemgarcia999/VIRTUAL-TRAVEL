@@ -97,7 +97,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "www.localhost:8081/api/web/",
+									"raw": "www.localhost:8081/api/web/reservas",
 									"host": [
 										"www",
 										"localhost"
@@ -106,7 +106,7 @@
 									"path": [
 										"api",
 										"web",
-										""
+										"reservas"
 									]
 								}
 							},
@@ -175,7 +175,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"ciudadDestino\":\"Barcelona\",\r\n    \"nombre\":\"Jose\",\r\n    \"apellido\":\"Garcia\",\r\n    \"telefono\":\"666666666\",\r\n    \"email\":\"josemanuel.garcia@bosonit.com\",\r\n    \"fechaReserva\":\"2022-04-29\",\r\n    \"horaReserva\":\"8\"\r\n}",
+									"raw": "{\r\n    \"ciudadDestino\":\"Valencia\",\r\n    \"nombre\":\"Pedro\",\r\n    \"apellido\":\"Garcia\",\r\n    \"telefono\":\"666666666\",\r\n    \"email\":\"josemanuel.garcia@bosonit.com\",\r\n    \"fechaReserva\":\"2022-04-29\",\r\n    \"horaReserva\":\"8\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -221,9 +221,21 @@
 						},
 						{
 							"name": "obtenerCapacidadViaje",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"method": "GET",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"ciudadDestino\": \"Madrid\",\r\n    \"fecha\": \"2022-04-29\",\r\n    \"hora\": 8.0\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
 									"raw": "www.localhost:8083/api/web/reservasDisponibles/capacidad",
 									"host": [
@@ -333,7 +345,7 @@
 									}
 								},
 								"url": {
-									"raw": "www.localhost:8082/api/empresa/reservas",
+									"raw": "www.localhost:8082/api/web/reservas",
 									"host": [
 										"www",
 										"localhost"
@@ -341,7 +353,7 @@
 									"port": "8082",
 									"path": [
 										"api",
-										"empresa",
+										"web",
 										"reservas"
 									]
 								}
@@ -354,7 +366,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "www.localhost:8082/api/empresa/reservasDisponibles",
+									"raw": "www.localhost:8082/api/web/reservasDisponibles",
 									"host": [
 										"www",
 										"localhost"
@@ -362,7 +374,7 @@
 									"port": "8082",
 									"path": [
 										"api",
-										"empresa",
+										"web",
 										"reservasDisponibles"
 									]
 								}
@@ -473,14 +485,13 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvbG9naW4iLCJleHAiOjE2NDkxNTgxOTh9.4hxjEbdP82H4-WKiiVbKbNSq4u_E4gInMpFGxlqOzAw",
-										"type": "text",
-										"disabled": true
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvZW1wcmVzYS9sb2dpbiIsImV4cCI6MTY1MjE3NTc4NX0.5EhLrpTEhdet0TCMS9XuzJkijhizpFbwa9T6OiIBj08",
+										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"ciudadDestino\":\"Jaen\",\r\n    \"nombre\":\"Jose\",\r\n    \"apellido\":\"Garcia\",\r\n    \"telefono\":\"666666666\",\r\n    \"email\":\"josemanuel.garcia@bosonit.com\",\r\n    \"fechaReserva\":\"2022-04-19\",\r\n    \"horaReserva\":\"7.30\"\r\n}",
+									"raw": "{\r\n    \"ciudadDestino\":\"Bilbao\",\r\n    \"nombre\":\"  Juan\",\r\n    \"apellido\":\"Garcia\",\r\n    \"telefono\":\"666666666\",\r\n    \"email\":\"josemanuel.garcia@bosonit.com\",\r\n    \"fechaReserva\":\"2022-05-27\",\r\n    \"horaReserva\":\"8.0\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -488,14 +499,15 @@
 									}
 								},
 								"url": {
-									"raw": "www.localhost:8081/api/reservas",
+									"raw": "www.localhost:8080/api/empresa/reservas",
 									"host": [
 										"www",
 										"localhost"
 									],
-									"port": "8081",
+									"port": "8080",
 									"path": [
 										"api",
+										"empresa",
 										"reservas"
 									]
 								}
@@ -509,13 +521,12 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvbG9naW4iLCJleHAiOjE2NDkxNTczMjd9.qNfGjMYYHnukhtC61-3y39PzmPbr0oJykfgqXOnwvug",
-										"type": "text",
-										"disabled": true
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvZW1wcmVzYS9sb2dpbiIsImV4cCI6MTY1MjI1MzU1NH0.uU_a7vL_jnM_pDZ6V8UlolkRAnVfzBXh3W8_4Fl9PNI",
+										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "www.localhost:8080/api/reservasDisponibles",
+									"raw": "www.localhost:8080/api/empresa/reservasDisponibles",
 									"host": [
 										"www",
 										"localhost"
@@ -523,6 +534,7 @@
 									"port": "8080",
 									"path": [
 										"api",
+										"empresa",
 										"reservasDisponibles"
 									]
 								}
@@ -536,10 +548,16 @@
 							},
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvZW1wcmVzYS9sb2dpbiIsImV4cCI6MTY1MjI1MzY1NH0.X56mgznzW12udjcZ6w4UUTQPtNlX0KkWZPhij0wPc5U",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
-									"raw": "    {\r\n    \"ciudadDestino\":\"Sevilla\",\r\n        \"hora\":\"7.30\",\r\n    \"fecha\":\"2022-04-19\"\r\n\r\n    }",
+									"raw": "    {\r\n    \"ciudadDestino\":\"Madrid\",\r\n    \"hora\":\"8.0\",\r\n    \"fecha\":\"2022-04-29\"\r\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -547,7 +565,7 @@
 									}
 								},
 								"url": {
-									"raw": "www.localhost:8080/api/reservasDisponibles/capacidad",
+									"raw": "www.localhost:8080/api/empresa/reservasDisponibles/capacidad",
 									"host": [
 										"www",
 										"localhost"
@@ -555,6 +573,7 @@
 									"port": "8080",
 									"path": [
 										"api",
+										"empresa",
 										"reservasDisponibles",
 										"capacidad"
 									]
@@ -568,7 +587,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "www.localhost:8080/api/",
+									"raw": "www.localhost:8080/api/empresa/reservas",
 									"host": [
 										"www",
 										"localhost"
@@ -576,7 +595,8 @@
 									"port": "8080",
 									"path": [
 										"api",
-										""
+										"empresa",
+										"reservas"
 									]
 								}
 							},
@@ -586,9 +606,15 @@
 							"name": "borrarReserva",
 							"request": {
 								"method": "DELETE",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvZW1wcmVzYS9sb2dpbiIsImV4cCI6MTY1MjI1MzY1NH0.X56mgznzW12udjcZ6w4UUTQPtNlX0KkWZPhij0wPc5U",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "www.localhost:8080/api/reservas/2",
+									"raw": "www.localhost:8080/api/empresa/reservas/2",
 									"host": [
 										"www",
 										"localhost"
@@ -596,6 +622,7 @@
 									"port": "8080",
 									"path": [
 										"api",
+										"empresa",
 										"reservas",
 										"2"
 									]
@@ -609,14 +636,15 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "www.localhost:8081/api/reservasDisponibles/1",
+									"raw": "www.localhost:8080/api/empresa/reservasDisponibles/1",
 									"host": [
 										"www",
 										"localhost"
 									],
-									"port": "8081",
+									"port": "8080",
 									"path": [
 										"api",
+										"empresa",
 										"reservasDisponibles",
 										"1"
 									]
@@ -633,15 +661,66 @@
 							"name": "GetAllCorreos",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvZW1wcmVzYS9sb2dpbiIsImV4cCI6MTY1MjI1MzY1NH0.X56mgznzW12udjcZ6w4UUTQPtNlX0KkWZPhij0wPc5U",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "www.localhost:8080/api/empresa/correos",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"empresa",
+										"correos"
+									]
+								}
 							},
 							"response": []
 						},
 						{
 							"name": "obtenerFiltradoCorreo",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvZW1wcmVzYS9sb2dpbiIsImV4cCI6MTY1MjE4MjYzOX0.kEFqpNC_1nO5gY-l2vpVZvTfKejwCxpZpu5NG9mNPwY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ciudadDestino\":\"Madrid\",\r\n    \"fechaInferior\":\"2022-04-12\",\r\n    \"fechaSuperior\":\"2022-04-19\",\r\n    \"horaInferior\":\"6.0\",\r\n    \"horaSuperior\":\"9.0\"\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "www.localhost:8080/api/empresa/correos/filtrar",
+									"host": [
+										"www",
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"empresa",
+										"correos",
+										"filtrar"
+									]
+								}
 							},
 							"response": []
 						}
@@ -664,11 +743,23 @@
 									"key": "password",
 									"value": "1234",
 									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "juanmy999",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "www.localhost:8080/api/login",
+							"raw": "www.localhost:8080/api/empresa/login",
 							"host": [
 								"www",
 								"localhost"
@@ -676,6 +767,7 @@
 							"port": "8080",
 							"path": [
 								"api",
+								"empresa",
 								"login"
 							]
 						}
@@ -684,9 +776,46 @@
 				},
 				{
 					"name": "getUsers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbWdhcmNpYTk5OSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL3d3dy5sb2NhbGhvc3Q6ODA4MC9hcGkvZW1wcmVzYS9sb2dpbiIsImV4cCI6MTY1MjI1MzY1NH0.X56mgznzW12udjcZ6w4UUTQPtNlX0KkWZPhij0wPc5U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "josemgarcia999",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "www.localhost:8080/api/empresa/users",
+							"host": [
+								"www",
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"empresa",
+								"users"
+							]
+						}
 					},
 					"response": []
 				}
